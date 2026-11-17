@@ -1,0 +1,22 @@
+{
+  "eyebrow": "SKY AUTO SPA \u00b7 STATEN ISLAND",
+  "heading": "A Fresh Shine\nStarts Here",
+  "description": "Your next clean car feeling starts on Bay street. ",
+  "desktop_image": "/assets/hero.webp",
+  "mobile_image": "/assets/hero-mobile.webp",
+  "image_alt": "Illustrative silver car with freshly rinsed bodywork",
+  "primary_button": {
+    "enabled": true,
+    "label": "Call Now",
+    "target": "phone",
+    "url": "",
+    "new_tab": false
+  },
+  "secondary_button": {
+    "enabled": true,
+    "label": "Get Directions",
+    "target": "directions",
+    "url": "",
+    "new_tab": true
+  }
+}

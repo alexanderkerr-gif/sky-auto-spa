@@ -1,0 +1,23 @@
+{
+  "eyebrow": "CAR WASH",
+  "heading": "A clean car.",
+  "highlight": "A fresh start.",
+  "description": "Visit Sky Auto Spa on Bay Street for a car wash. Call the shop to find out which services suit your vehicle.",
+  "image": "/assets/water.webp",
+  "image_alt": "Illustrative close-up of water beading on blue automotive paint",
+  "items": [
+    {
+      "title": "Wash options",
+      "description": "Call for current services and pricing.",
+      "price": ""
+    }
+  ],
+  "button": {
+    "enabled": true,
+    "label": "Call Now",
+    "target": "phone",
+    "url": "",
+    "new_tab": false
+  },
+  "show_phone": true
+}

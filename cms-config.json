@@ -10,152 +10,810 @@
   "public_folder": "/assets/uploads",
   "collections": [
     {
-      "name": "website",
-      "label": "Website",
+      "name": "navigation",
+      "label": "Navigation",
+      "delete": false,
+      "editor": {
+        "preview": false
+      },
       "files": [
         {
-          "name": "site",
-          "label": "Business information and photos",
-          "file": "content/site.json",
+          "name": "navigation",
+          "label": "Navigation",
+          "file": "content/navigation.json",
           "format": "json",
           "fields": [
             {
-              "label": "Homepage headline",
-              "name": "hero_title",
-              "widget": "text",
-              "required": true
+              "name": "brand_primary",
+              "label": "Brand name \u2014 first part",
+              "widget": "string"
             },
             {
-              "label": "Homepage introduction",
-              "name": "hero_intro",
+              "name": "brand_secondary",
+              "label": "Brand name \u2014 second part",
+              "widget": "string"
+            },
+            {
+              "name": "tagline",
+              "label": "Brand tagline",
               "widget": "string",
-              "required": true
+              "required": false
             },
             {
-              "label": "Services introduction",
-              "name": "services_intro",
-              "widget": "text",
-              "required": true
-            },
-            {
-              "label": "About paragraph",
-              "name": "about_intro",
-              "widget": "text",
-              "required": true
-            },
-            {
-              "label": "About additional paragraph",
-              "name": "about_details",
-              "widget": "text",
-              "required": true
-            },
-            {
-              "label": "Displayed phone number",
-              "name": "phone",
-              "widget": "string",
-              "required": true
-            },
-            {
-              "label": "Dialing number (example: +13477215261)",
-              "name": "phone_e164",
-              "widget": "string",
-              "required": true
-            },
-            {
-              "label": "Desktop hero photo",
-              "name": "hero_image",
+              "name": "logo",
+              "label": "Logo",
               "widget": "image",
-              "required": true
+              "choose_url": false,
+              "media_library": {
+                "config": {
+                  "multiple": false
+                }
+              },
+              "hint": "Choose or upload a JPG, PNG, WebP, GIF, or AVIF image."
             },
             {
-              "label": "Mobile hero photo",
-              "name": "hero_mobile_image",
+              "name": "logo_alt",
+              "label": "Logo description",
+              "widget": "string"
+            },
+            {
+              "name": "home_link",
+              "label": "Logo link",
+              "widget": "string",
+              "hint": "Usually #home"
+            },
+            {
+              "name": "links",
+              "label": "Menu links",
+              "widget": "list",
+              "fields": [
+                {
+                  "name": "label",
+                  "label": "Link label",
+                  "widget": "string"
+                },
+                {
+                  "name": "url",
+                  "label": "Destination",
+                  "widget": "string",
+                  "hint": "Use #services, #about, #visit, #faqs, or an https:// URL."
+                },
+                {
+                  "name": "new_tab",
+                  "label": "Open in a new tab",
+                  "widget": "boolean",
+                  "default": false
+                }
+              ],
+              "collapsed": true,
+              "summary": "{{fields.label}}",
+              "required": false
+            },
+            {
+              "name": "show_phone",
+              "label": "Show header phone link",
+              "widget": "boolean",
+              "default": true
+            },
+            {
+              "name": "menu_label",
+              "label": "Mobile menu button label",
+              "widget": "string"
+            },
+            {
+              "name": "close_label",
+              "label": "Mobile close button label",
+              "widget": "string"
+            },
+            {
+              "name": "mobile_call_label",
+              "label": "Sticky mobile call label",
+              "widget": "string"
+            },
+            {
+              "name": "mobile_directions_label",
+              "label": "Sticky mobile directions label",
+              "widget": "string"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "hero",
+      "label": "Hero",
+      "delete": false,
+      "editor": {
+        "preview": false
+      },
+      "files": [
+        {
+          "name": "hero",
+          "label": "Hero",
+          "file": "content/hero.json",
+          "format": "json",
+          "fields": [
+            {
+              "name": "eyebrow",
+              "label": "Small introductory label",
+              "widget": "string",
+              "required": false
+            },
+            {
+              "name": "heading",
+              "label": "Main heading",
+              "widget": "text",
+              "hint": "New lines are preserved."
+            },
+            {
+              "name": "description",
+              "label": "Supporting text",
+              "widget": "text"
+            },
+            {
+              "name": "desktop_image",
+              "label": "Desktop image",
               "widget": "image",
-              "required": true
+              "choose_url": false,
+              "media_library": {
+                "config": {
+                  "multiple": false
+                }
+              },
+              "hint": "Choose or upload a JPG, PNG, WebP, GIF, or AVIF image."
             },
             {
-              "label": "Services photo",
-              "name": "services_image",
+              "name": "mobile_image",
+              "label": "Mobile image",
               "widget": "image",
-              "required": true
+              "choose_url": false,
+              "media_library": {
+                "config": {
+                  "multiple": false
+                }
+              },
+              "hint": "Choose or upload a JPG, PNG, WebP, GIF, or AVIF image."
             },
             {
-              "label": "About photo",
-              "name": "about_image",
+              "name": "image_alt",
+              "label": "Image description (alt text)",
+              "widget": "string"
+            },
+            {
+              "name": "primary_button",
+              "label": "Primary button",
+              "widget": "object",
+              "fields": [
+                {
+                  "name": "enabled",
+                  "label": "Show button",
+                  "widget": "boolean",
+                  "default": true
+                },
+                {
+                  "name": "label",
+                  "label": "Button label",
+                  "widget": "string"
+                },
+                {
+                  "name": "target",
+                  "label": "Link destination",
+                  "widget": "select",
+                  "options": [
+                    {
+                      "label": "Call the business phone",
+                      "value": "phone"
+                    },
+                    {
+                      "label": "Directions to the business address",
+                      "value": "directions"
+                    },
+                    {
+                      "label": "Custom URL or page anchor",
+                      "value": "custom"
+                    }
+                  ]
+                },
+                {
+                  "name": "url",
+                  "label": "Custom URL",
+                  "widget": "string",
+                  "required": false,
+                  "hint": "Only used for Custom. Use https://, tel:, mailto:, /path, or #section."
+                },
+                {
+                  "name": "new_tab",
+                  "label": "Open in a new tab",
+                  "widget": "boolean",
+                  "default": false
+                }
+              ],
+              "collapsed": false
+            },
+            {
+              "name": "secondary_button",
+              "label": "Secondary button",
+              "widget": "object",
+              "fields": [
+                {
+                  "name": "enabled",
+                  "label": "Show button",
+                  "widget": "boolean",
+                  "default": true
+                },
+                {
+                  "name": "label",
+                  "label": "Button label",
+                  "widget": "string"
+                },
+                {
+                  "name": "target",
+                  "label": "Link destination",
+                  "widget": "select",
+                  "options": [
+                    {
+                      "label": "Call the business phone",
+                      "value": "phone"
+                    },
+                    {
+                      "label": "Directions to the business address",
+                      "value": "directions"
+                    },
+                    {
+                      "label": "Custom URL or page anchor",
+                      "value": "custom"
+                    }
+                  ]
+                },
+                {
+                  "name": "url",
+                  "label": "Custom URL",
+                  "widget": "string",
+                  "required": false,
+                  "hint": "Only used for Custom. Use https://, tel:, mailto:, /path, or #section."
+                },
+                {
+                  "name": "new_tab",
+                  "label": "Open in a new tab",
+                  "widget": "boolean",
+                  "default": false
+                }
+              ],
+              "collapsed": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "feature",
+      "label": "50/50 Feature",
+      "delete": false,
+      "editor": {
+        "preview": false
+      },
+      "files": [
+        {
+          "name": "feature",
+          "label": "50/50 Feature",
+          "file": "content/feature.json",
+          "format": "json",
+          "fields": [
+            {
+              "name": "eyebrow",
+              "label": "Small introductory label",
+              "widget": "string",
+              "required": false
+            },
+            {
+              "name": "heading",
+              "label": "Heading",
+              "widget": "text",
+              "hint": "New lines are preserved."
+            },
+            {
+              "name": "highlight",
+              "label": "Highlighted words",
+              "widget": "string",
+              "required": false
+            },
+            {
+              "name": "description",
+              "label": "Body text",
+              "widget": "text"
+            },
+            {
+              "name": "image",
+              "label": "Left image",
               "widget": "image",
-              "required": true
+              "choose_url": false,
+              "media_library": {
+                "config": {
+                  "multiple": false
+                }
+              },
+              "hint": "Choose or upload a JPG, PNG, WebP, GIF, or AVIF image."
             },
             {
-              "label": "Street address",
-              "name": "street",
+              "name": "image_alt",
+              "label": "Image description (alt text)",
+              "widget": "string"
+            },
+            {
+              "name": "items",
+              "label": "Detail rows / services",
+              "widget": "list",
+              "fields": [
+                {
+                  "name": "title",
+                  "label": "Row heading",
+                  "widget": "string"
+                },
+                {
+                  "name": "description",
+                  "label": "Description",
+                  "widget": "text"
+                },
+                {
+                  "name": "price",
+                  "label": "Price",
+                  "widget": "string",
+                  "required": false
+                }
+              ],
+              "collapsed": true,
+              "summary": "{{fields.title}}",
+              "required": false
+            },
+            {
+              "name": "button",
+              "label": "Bottom call to action",
+              "widget": "object",
+              "fields": [
+                {
+                  "name": "enabled",
+                  "label": "Show button",
+                  "widget": "boolean",
+                  "default": true
+                },
+                {
+                  "name": "label",
+                  "label": "Button label",
+                  "widget": "string"
+                },
+                {
+                  "name": "target",
+                  "label": "Link destination",
+                  "widget": "select",
+                  "options": [
+                    {
+                      "label": "Call the business phone",
+                      "value": "phone"
+                    },
+                    {
+                      "label": "Directions to the business address",
+                      "value": "directions"
+                    },
+                    {
+                      "label": "Custom URL or page anchor",
+                      "value": "custom"
+                    }
+                  ]
+                },
+                {
+                  "name": "url",
+                  "label": "Custom URL",
+                  "widget": "string",
+                  "required": false,
+                  "hint": "Only used for Custom. Use https://, tel:, mailto:, /path, or #section."
+                },
+                {
+                  "name": "new_tab",
+                  "label": "Open in a new tab",
+                  "widget": "boolean",
+                  "default": false
+                }
+              ],
+              "collapsed": false
+            },
+            {
+              "name": "show_phone",
+              "label": "Show phone number beside button label",
+              "widget": "boolean",
+              "default": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "showcase",
+      "label": "Full-width Showcase",
+      "delete": false,
+      "editor": {
+        "preview": false
+      },
+      "files": [
+        {
+          "name": "showcase",
+          "label": "Full-width Showcase",
+          "file": "content/showcase.json",
+          "format": "json",
+          "fields": [
+            {
+              "name": "heading",
+              "label": "Heading",
+              "widget": "text",
+              "hint": "New lines are preserved."
+            },
+            {
+              "name": "highlight",
+              "label": "Highlighted words",
               "widget": "string",
-              "required": true
+              "required": false
             },
             {
-              "label": "City",
-              "name": "city",
-              "widget": "string",
-              "required": true
+              "name": "image",
+              "label": "Full-width image",
+              "widget": "image",
+              "choose_url": false,
+              "media_library": {
+                "config": {
+                  "multiple": false
+                }
+              },
+              "hint": "Choose or upload a JPG, PNG, WebP, GIF, or AVIF image."
             },
             {
-              "label": "State",
-              "name": "state",
-              "widget": "string",
-              "required": true
+              "name": "image_alt",
+              "label": "Image description (alt text)",
+              "widget": "string"
             },
             {
-              "label": "ZIP code",
-              "name": "postal_code",
-              "widget": "string",
-              "required": true
-            },
-            {
-              "label": "Opening hours (leave blank if unconfirmed)",
-              "name": "hours",
+              "name": "caption",
+              "label": "Image caption / disclosure",
               "widget": "text",
               "required": false
             },
             {
-              "label": "Services and prices",
-              "name": "services",
+              "name": "story_heading",
+              "label": "Story heading",
+              "widget": "string"
+            },
+            {
+              "name": "paragraphs",
+              "label": "Story paragraphs",
               "widget": "list",
-              "required": false,
               "fields": [
                 {
-                  "label": "Service name",
-                  "name": "name",
+                  "name": "text",
+                  "label": "Paragraph",
+                  "widget": "text"
+                }
+              ],
+              "collapsed": true,
+              "summary": "{{fields.text}}",
+              "required": false
+            },
+            {
+              "name": "button",
+              "label": "Optional story button",
+              "widget": "object",
+              "fields": [
+                {
+                  "name": "enabled",
+                  "label": "Show button",
+                  "widget": "boolean",
+                  "default": true
+                },
+                {
+                  "name": "label",
+                  "label": "Button label",
                   "widget": "string"
                 },
                 {
-                  "label": "Description",
-                  "name": "description",
-                  "widget": "text"
+                  "name": "target",
+                  "label": "Link destination",
+                  "widget": "select",
+                  "options": [
+                    {
+                      "label": "Call the business phone",
+                      "value": "phone"
+                    },
+                    {
+                      "label": "Directions to the business address",
+                      "value": "directions"
+                    },
+                    {
+                      "label": "Custom URL or page anchor",
+                      "value": "custom"
+                    }
+                  ]
                 },
                 {
-                  "label": "Price (optional)",
-                  "name": "price",
+                  "name": "url",
+                  "label": "Custom URL",
                   "widget": "string",
-                  "required": false
+                  "required": false,
+                  "hint": "Only used for Custom. Use https://, tel:, mailto:, /path, or #section."
+                },
+                {
+                  "name": "new_tab",
+                  "label": "Open in a new tab",
+                  "widget": "boolean",
+                  "default": false
                 }
+              ],
+              "collapsed": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "location",
+      "label": "Location & Details",
+      "delete": false,
+      "editor": {
+        "preview": false
+      },
+      "files": [
+        {
+          "name": "location",
+          "label": "Location & Details",
+          "file": "content/location.json",
+          "format": "json",
+          "fields": [
+            {
+              "name": "heading",
+              "label": "Heading",
+              "widget": "text",
+              "hint": "New lines are preserved."
+            },
+            {
+              "name": "highlight",
+              "label": "Highlighted words",
+              "widget": "string",
+              "required": false
+            },
+            {
+              "name": "business_name",
+              "label": "Business name",
+              "widget": "string"
+            },
+            {
+              "name": "street",
+              "label": "Street address",
+              "widget": "string"
+            },
+            {
+              "name": "city",
+              "label": "City",
+              "widget": "string"
+            },
+            {
+              "name": "state",
+              "label": "State",
+              "widget": "string"
+            },
+            {
+              "name": "postal_code",
+              "label": "ZIP / postal code",
+              "widget": "string"
+            },
+            {
+              "name": "country",
+              "label": "Country code",
+              "widget": "string",
+              "hint": "Two-letter code, such as US."
+            },
+            {
+              "name": "phone",
+              "label": "Displayed phone number",
+              "widget": "string"
+            },
+            {
+              "name": "phone_e164",
+              "label": "Dialing number",
+              "widget": "string",
+              "pattern": [
+                "^\\+[1-9]\\d{7,14}$",
+                "Include country code, for example +13477215261."
               ]
             },
             {
-              "label": "Services FAQ answer",
-              "name": "services_summary",
+              "name": "hours_heading",
+              "label": "Opening-hours heading",
+              "widget": "string"
+            },
+            {
+              "name": "hours",
+              "label": "Opening hours",
               "widget": "text",
-              "required": true
+              "required": false,
+              "hint": "One day or time range per line. Leave blank until confirmed."
             },
             {
-              "label": "Search page title",
+              "name": "hours_fallback",
+              "label": "Text when hours are not set",
+              "widget": "text"
+            },
+            {
+              "name": "button",
+              "label": "Directions / contact button",
+              "widget": "object",
+              "fields": [
+                {
+                  "name": "enabled",
+                  "label": "Show button",
+                  "widget": "boolean",
+                  "default": true
+                },
+                {
+                  "name": "label",
+                  "label": "Button label",
+                  "widget": "string"
+                },
+                {
+                  "name": "target",
+                  "label": "Link destination",
+                  "widget": "select",
+                  "options": [
+                    {
+                      "label": "Call the business phone",
+                      "value": "phone"
+                    },
+                    {
+                      "label": "Directions to the business address",
+                      "value": "directions"
+                    },
+                    {
+                      "label": "Custom URL or page anchor",
+                      "value": "custom"
+                    }
+                  ]
+                },
+                {
+                  "name": "url",
+                  "label": "Custom URL",
+                  "widget": "string",
+                  "required": false,
+                  "hint": "Only used for Custom. Use https://, tel:, mailto:, /path, or #section."
+                },
+                {
+                  "name": "new_tab",
+                  "label": "Open in a new tab",
+                  "widget": "boolean",
+                  "default": false
+                }
+              ],
+              "collapsed": false
+            },
+            {
+              "name": "show_map",
+              "label": "Show map",
+              "widget": "boolean",
+              "default": true
+            },
+            {
+              "name": "map_title",
+              "label": "Accessible map title",
+              "widget": "string"
+            },
+            {
+              "name": "map_link_label",
+              "label": "Link below map",
+              "widget": "string"
+            },
+            {
+              "name": "map_query",
+              "label": "Map location override",
+              "widget": "string",
+              "required": false,
+              "hint": "Leave blank to use the address above. Use a place name or full address, not embed code."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "faqs",
+      "label": "FAQs",
+      "delete": false,
+      "editor": {
+        "preview": false
+      },
+      "files": [
+        {
+          "name": "faqs",
+          "label": "FAQs",
+          "file": "content/faqs.json",
+          "format": "json",
+          "fields": [
+            {
+              "name": "heading",
+              "label": "Section heading",
+              "widget": "string"
+            },
+            {
+              "name": "items",
+              "label": "Questions and answers",
+              "widget": "list",
+              "fields": [
+                {
+                  "name": "question",
+                  "label": "Question",
+                  "widget": "string"
+                },
+                {
+                  "name": "source",
+                  "label": "Answer source",
+                  "widget": "select",
+                  "options": [
+                    {
+                      "label": "Write my own answer",
+                      "value": "custom"
+                    },
+                    {
+                      "label": "Use current opening hours",
+                      "value": "hours"
+                    },
+                    {
+                      "label": "Use current address and directions",
+                      "value": "directions"
+                    }
+                  ],
+                  "default": "custom"
+                },
+                {
+                  "name": "answer",
+                  "label": "Answer",
+                  "widget": "text",
+                  "required": false,
+                  "hint": "Required for Write my own answer. For automatic answers, change the details in Location & Details."
+                }
+              ],
+              "collapsed": true,
+              "summary": "{{fields.question}}",
+              "required": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "settings",
+      "label": "SEO & Footer",
+      "delete": false,
+      "editor": {
+        "preview": false
+      },
+      "files": [
+        {
+          "name": "settings",
+          "label": "SEO & Footer",
+          "file": "content/settings.json",
+          "format": "json",
+          "fields": [
+            {
               "name": "page_title",
-              "widget": "string",
-              "required": true
+              "label": "Search page title",
+              "widget": "string"
             },
             {
-              "label": "Search description",
               "name": "meta_description",
-              "widget": "string",
-              "required": true
+              "label": "Search description",
+              "widget": "text"
+            },
+            {
+              "name": "footer_name",
+              "label": "Footer business label",
+              "widget": "string"
+            },
+            {
+              "name": "footer_tagline",
+              "label": "Footer tagline",
+              "widget": "string"
             }
           ]
         }

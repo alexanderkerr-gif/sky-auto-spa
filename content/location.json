@@ -1,0 +1,26 @@
+{
+  "heading": "Find us on",
+  "highlight": "Bay Street.",
+  "business_name": "Sky Auto Spa",
+  "street": "517 Bay St",
+  "city": "Staten Island",
+  "state": "NY",
+  "postal_code": "10304",
+  "country": "US",
+  "phone": "(347) 721-5261",
+  "phone_e164": "+13477215261",
+  "hours_heading": "Opening hours",
+  "hours": "",
+  "hours_fallback": "Call ahead for current opening hours.",
+  "button": {
+    "enabled": true,
+    "label": "Get Directions",
+    "target": "directions",
+    "url": "",
+    "new_tab": true
+  },
+  "show_map": true,
+  "map_title": "Map showing Sky Auto Spa",
+  "map_link_label": "Open location in Google Maps",
+  "map_query": ""
+}

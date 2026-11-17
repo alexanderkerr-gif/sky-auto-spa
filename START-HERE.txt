@@ -1,5 +1,5 @@
 SKY AUTO SPA — OWNER DASHBOARD SETUP
-Status: Prepared source package. Not connected to GitHub, not deployed, and login is not yet activated.
+This project is connected to GitHub and Netlify. Existing owner login uses GitHub OAuth. The steps below document how to reconnect it if moving accounts.
 This replaces the original drag-and-drop workflow. Upload these source files to a GitHub repository, not Netlify Drop.
 
 1. Create a GitHub repository named sky-auto-spa with a main branch. Upload the CONTENTS of this folder at the repository root. Include public, content, template.html, build.mjs, cms-config.json and netlify.toml. The site has no npm dependencies.
@@ -8,8 +8,10 @@ This replaces the original drag-and-drop workflow. Upload these source files to 
 4. In GitHub Settings > Developer settings > OAuth Apps, register a new application. Homepage: https://sunny-chimera-c97dec.netlify.app. Authorization callback: https://api.netlify.com/auth/done.
 5. In Netlify Project configuration > Security > OAuth > Authentication providers, install GitHub. Enter the OAuth application's Client ID and Client Secret there. Keep the secret in Netlify; do not put it in source code or send it in chat.
 6. The business owner needs their own GitHub account with write access to this repository. Ideally the owner owns both the hosting account and repository. This login method gives the owner repository access, not only restricted content access.
-7. Once deployed, open https://sunny-chimera-c97dec.netlify.app/admin/ and log in with GitHub. Edit Website > Business information and photos. Publish commits the edit to GitHub; Netlify then rebuilds. Wait for Netlify to show a successful deployment before checking the public page.
+7. Once deployed, open https://sunny-chimera-c97dec.netlify.app/admin/ and log in with GitHub. Choose Navigation, Hero, 50/50 Feature, Full-width Showcase, Location & Details, FAQs, or SEO & Footer from the dashboard sidebar. Publish commits the edit to GitHub; Netlify then rebuilds. Wait for Netlify to show a successful deployment before checking the public page.
 8. Test a small change with the OWNER account, publish, and verify it in a private browser window. Also verify an unauthorized account cannot edit. This end-to-end test cannot be completed until the accounts are connected.
+
+See README.md for the current section-based CMS.
 
 WHAT THE OWNER CAN CHANGE
 Headline, introduction, about copy, services and optional prices, opening hours, phone, address, desktop/mobile hero images, service/about images, search title and description.

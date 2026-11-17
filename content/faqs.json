@@ -1,0 +1,20 @@
+{
+  "heading": "Before you head over",
+  "items": [
+    {
+      "question": "What services and prices are available?",
+      "answer": "Call for current car wash options and pricing. The shop can help you choose the right service for your vehicle.",
+      "source": "custom"
+    },
+    {
+      "question": "What are your opening hours?",
+      "answer": "",
+      "source": "hours"
+    },
+    {
+      "question": "How do I get there?",
+      "answer": "",
+      "source": "directions"
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "brand_primary": "SKY",
+  "brand_secondary": "AUTO SPA",
+  "tagline": "STATEN ISLAND CAR WASH",
+  "logo": "/assets/mark.png",
+  "logo_alt": "Sky Auto Spa",
+  "home_link": "#home",
+  "links": [
+    {
+      "label": "Services",
+      "url": "#services",
+      "new_tab": false
+    },
+    {
+      "label": "About",
+      "url": "#about",
+      "new_tab": false
+    },
+    {
+      "label": "Visit us",
+      "url": "#visit",
+      "new_tab": false
+    }
+  ],
+  "show_phone": true,
+  "menu_label": "Menu",
+  "close_label": "Close",
+  "mobile_call_label": "Call Now",
+  "mobile_directions_label": "Get Directions"
+}
