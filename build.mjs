@@ -28,6 +28,8 @@ const config=JSON.parse(fs.readFileSync('cms-config.json','utf8'));config.backen
 fs.rmSync('dist',{recursive:true,force:true});fs.cpSync('public','dist',{recursive:true});
 fs.writeFileSync('dist/index.html',html);
 fs.writeFileSync('dist/admin/config.yml',JSON.stringify(config,null,2));
+// The overview includes only information already published on the public site.
+fs.writeFileSync('dist/admin/overview.json',JSON.stringify({hero_title:d.hero_title,hero_intro:d.hero_intro,hero_image:d.hero_image,hero_mobile_image:d.hero_mobile_image,services_image:d.services_image,about_image:d.about_image,services:d.services??[],hours:d.hours??''}));
 fs.writeFileSync('dist/robots.txt','User-agent: *\nAllow: /\nDisallow: /admin/\nSitemap: '+origin+'/sitemap.xml\n');
 fs.writeFileSync('dist/sitemap.xml','<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url><loc>'+esc(origin)+'/</loc></url></urlset>');
 console.log('Built site and owner dashboard for '+repo);
