@@ -1,0 +1,27 @@
+SKY AUTO SPA — OWNER DASHBOARD SETUP
+Status: Prepared source package. Not connected to GitHub, not deployed, and login is not yet activated.
+This replaces the original drag-and-drop workflow. Upload these source files to a GitHub repository, not Netlify Drop.
+
+1. Create a GitHub repository named sky-auto-spa with a main branch. Upload the CONTENTS of this folder at the repository root. Include public, content, template.html, build.mjs, cms-config.json and netlify.toml. The site has no npm dependencies.
+2. In the EXISTING Netlify project sunny-chimera-c97dec, link that repository under Project configuration > Developer settings > Continuous deployment > Repository. Keep the existing site URL. Use branch main, build command node build.mjs, and publish directory dist.
+3. Add the Netlify environment variable CMS_REPOSITORY with value YOUR-GITHUB-USERNAME/sky-auto-spa (replace with the actual repository). This is public configuration, not a password. Redeploy after setting it. Build deliberately fails if the repository is missing.
+4. In GitHub Settings > Developer settings > OAuth Apps, register a new application. Homepage: https://sunny-chimera-c97dec.netlify.app. Authorization callback: https://api.netlify.com/auth/done.
+5. In Netlify Project configuration > Security > OAuth > Authentication providers, install GitHub. Enter the OAuth application's Client ID and Client Secret there. Keep the secret in Netlify; do not put it in source code or send it in chat.
+6. The business owner needs their own GitHub account with write access to this repository. Ideally the owner owns both the hosting account and repository. This login method gives the owner repository access, not only restricted content access.
+7. Once deployed, open https://sunny-chimera-c97dec.netlify.app/admin/ and log in with GitHub. Edit Website > Business information and photos. Publish commits the edit to GitHub; Netlify then rebuilds. Wait for Netlify to show a successful deployment before checking the public page.
+8. Test a small change with the OWNER account, publish, and verify it in a private browser window. Also verify an unauthorized account cannot edit. This end-to-end test cannot be completed until the accounts are connected.
+
+WHAT THE OWNER CAN CHANGE
+Headline, introduction, about copy, services and optional prices, opening hours, phone, address, desktop/mobile hero images, service/about images, search title and description.
+Hours and service prices start blank; enter only confirmed details. Update narrative about text if the location changes. Image uploads must be PNG, JPG, WEBP, GIF or AVIF under /assets/. Phone dialing number must include +1 country code.
+No contact form, booking or payment processing is connected. Generated automotive imagery remains labeled illustrative.
+
+IMPORTANT
+Do not drag this source folder onto Netlify Drop: the site now needs the build command and Git connection. Existing live site is unchanged until you connect and deploy this package.
+Decap CMS loads from its CDN; Google Fonts and Maps also require network access.
+After choosing a custom domain, make it Netlify's primary domain and redeploy so canonical links and dashboard URLs update.
+
+DOCUMENTATION
+https://decapcms.org/docs/github-backend/
+https://docs.netlify.com/manage/security/secure-access-to-sites/oauth-provider-tokens/
+https://docs.netlify.com/build/git-workflows/repo-permissions-linking/

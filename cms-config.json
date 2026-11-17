@@ -1,0 +1,165 @@
+{
+  "backend": {
+    "name": "github",
+    "repo": "CONFIGURE_AT_BUILD",
+    "branch": "main"
+  },
+  "site_url": "https://sunny-chimera-c97dec.netlify.app",
+  "display_url": "https://sunny-chimera-c97dec.netlify.app",
+  "media_folder": "public/assets/uploads",
+  "public_folder": "/assets/uploads",
+  "collections": [
+    {
+      "name": "website",
+      "label": "Website",
+      "files": [
+        {
+          "name": "site",
+          "label": "Business information and photos",
+          "file": "content/site.json",
+          "format": "json",
+          "fields": [
+            {
+              "label": "Homepage headline",
+              "name": "hero_title",
+              "widget": "text",
+              "required": true
+            },
+            {
+              "label": "Homepage introduction",
+              "name": "hero_intro",
+              "widget": "string",
+              "required": true
+            },
+            {
+              "label": "Services introduction",
+              "name": "services_intro",
+              "widget": "text",
+              "required": true
+            },
+            {
+              "label": "About paragraph",
+              "name": "about_intro",
+              "widget": "text",
+              "required": true
+            },
+            {
+              "label": "About additional paragraph",
+              "name": "about_details",
+              "widget": "text",
+              "required": true
+            },
+            {
+              "label": "Displayed phone number",
+              "name": "phone",
+              "widget": "string",
+              "required": true
+            },
+            {
+              "label": "Dialing number (example: +13477215261)",
+              "name": "phone_e164",
+              "widget": "string",
+              "required": true
+            },
+            {
+              "label": "Desktop hero photo",
+              "name": "hero_image",
+              "widget": "image",
+              "required": true
+            },
+            {
+              "label": "Mobile hero photo",
+              "name": "hero_mobile_image",
+              "widget": "image",
+              "required": true
+            },
+            {
+              "label": "Services photo",
+              "name": "services_image",
+              "widget": "image",
+              "required": true
+            },
+            {
+              "label": "About photo",
+              "name": "about_image",
+              "widget": "image",
+              "required": true
+            },
+            {
+              "label": "Street address",
+              "name": "street",
+              "widget": "string",
+              "required": true
+            },
+            {
+              "label": "City",
+              "name": "city",
+              "widget": "string",
+              "required": true
+            },
+            {
+              "label": "State",
+              "name": "state",
+              "widget": "string",
+              "required": true
+            },
+            {
+              "label": "ZIP code",
+              "name": "postal_code",
+              "widget": "string",
+              "required": true
+            },
+            {
+              "label": "Opening hours (leave blank if unconfirmed)",
+              "name": "hours",
+              "widget": "text",
+              "required": false
+            },
+            {
+              "label": "Services and prices",
+              "name": "services",
+              "widget": "list",
+              "required": false,
+              "fields": [
+                {
+                  "label": "Service name",
+                  "name": "name",
+                  "widget": "string"
+                },
+                {
+                  "label": "Description",
+                  "name": "description",
+                  "widget": "text"
+                },
+                {
+                  "label": "Price (optional)",
+                  "name": "price",
+                  "widget": "string",
+                  "required": false
+                }
+              ]
+            },
+            {
+              "label": "Services FAQ answer",
+              "name": "services_summary",
+              "widget": "text",
+              "required": true
+            },
+            {
+              "label": "Search page title",
+              "name": "page_title",
+              "widget": "string",
+              "required": true
+            },
+            {
+              "label": "Search description",
+              "name": "meta_description",
+              "widget": "string",
+              "required": true
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
