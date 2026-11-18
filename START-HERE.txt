@@ -20,7 +20,7 @@ No contact form, booking or payment processing is connected. Generated automotiv
 
 IMPORTANT
 Do not drag this source folder onto Netlify Drop: the site now needs the build command and Git connection. Existing live site is unchanged until you connect and deploy this package.
-Decap CMS loads from its CDN; Google Fonts and Maps also require network access.
+The native dashboard uses your existing GitHub sign-in through Netlify. Google Fonts and Maps require network access.
 After choosing a custom domain, make it Netlify's primary domain and redeploy so canonical links and dashboard URLs update.
 
 DOCUMENTATION

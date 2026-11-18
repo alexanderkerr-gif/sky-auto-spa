@@ -24,10 +24,8 @@ if(page==='editor'){
  document.querySelector('#editor-heading').textContent=selected?sections[selected][0]:'Website sections';
  document.querySelector('#editor-description').textContent=selected?sections[selected][1]:'Choose the part of your page you want to update.';
  document.querySelector('#editor-help').textContent=selected?'This editor saves only this section. Click Publish when ready; allow a few minutes for the live site to update.':'Choose a section below to edit only that component. Each section publishes independently.';
- const full=document.querySelector('#fullscreen-editor');full.hidden=!selected;
- const url=selected?'/admin/editor.html#/collections/'+selected+'/entries/'+selected:'/admin/editor.html';full.href=url;
- document.querySelectorAll('.cms-frame').forEach(frame=>frame.hidden=frame.dataset.section!==selected);
- if(selected&&!document.querySelector('#frame-'+selected)){const frame=document.createElement('iframe');frame.id='frame-'+selected;frame.dataset.section=selected;frame.className='cms-frame';frame.title=sections[selected][0]+' content editor';frame.src=url;document.querySelector('#section-editors').append(frame);}
+ document.querySelector('#section-editors').hidden=!selected;
+ window.dispatchEvent(new CustomEvent('studio-section',{detail:selected}));
 }
 closeMenu();scrollTo(0,0);
 }

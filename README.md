@@ -14,7 +14,7 @@ Open `/admin/`, then choose a section in the sidebar or Website sections:
 - **FAQs** — heading and ordered questions/answers. Answers can be custom or automatically use hours/address.
 - **SEO & Footer** — search title/description and footer labels.
 
-Each section has its own JSON file under `content/` and its own Decap CMS file collection. Publishing one section changes only its file. The old all-in-one form is retired; previous content remains in Git history.
+Each section has its own JSON file under `content/` and its own native dashboard form. Publishing one section changes only its file. The old all-in-one form is retired; previous content remains in Git history.
 
 Dashboard routes use `/admin/#edit/hero` (and the other collection IDs). They open the matching authenticated editor directly. Frames remain mounted when switching sections so unsaved work is not discarded simply by using the sidebar. A full page reload can still discard edits.
 
@@ -27,3 +27,15 @@ GitHub OAuth is configured in Netlify. Editors need repository write access. Net
 ## Validation
 
 Run `node tests/sections.mjs` for section/schema/render/security regression checks. Build validates uploaded image paths, link protocols, phone format and FAQ answers. Existing public layout styles are preserved.
+
+## Native editing and publishing
+
+The admin has no embedded CMS or iframe. Forms use the dashboard styles and the structured field schema in cms-config.json. That filename is retained for schema compatibility; Decap is no longer loaded.
+
+Sign in with GitHub through the existing Netlify OAuth provider. Only users with repository write access can publish. The access token stays in memory, never in browser storage. Refreshing requires signing in again.
+
+Save draft stores text changes in this browser only. Pending photo bytes stay in the open tab until publishing; after closing the tab, reselect pending photos. Reload section explicitly discards that section's draft after confirmation.
+
+Publishing checks the latest section content for conflicting changes, uploads new images, creates one commit containing the section and photos, and advances main without force. Netlify then builds. The editor reports repository save separately from deployment completion. If deployment fails, check Netlify's build log.
+
+Validation: node tests/native-editor.mjs and node tests/sections.mjs after building. OAuth and actual publishing also need a signed-in browser acceptance test.

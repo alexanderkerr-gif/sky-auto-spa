@@ -14,4 +14,6 @@ const h=content.hero,f=content.feature,l=content.location;
 fs.writeFileSync('dist/admin/overview.json',JSON.stringify({hero_title:h.heading,hero_intro:h.description,hero_image:h.desktop_image,hero_mobile_image:h.mobile_image,services_image:f.image,about_image:content.showcase.image,services:f.items??[],hours:l.hours??'',section_count:6,faq_count:content.faqs.items.length}));
 fs.writeFileSync('dist/robots.txt','User-agent: *\nAllow: /\nDisallow: /admin/\nSitemap: '+origin+'/sitemap.xml\n');
 fs.writeFileSync('dist/sitemap.xml','<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url><loc>'+esc(origin)+'/</loc></url></urlset>');
-console.log('Built six section editors and website for '+repo);
+fs.writeFileSync('dist/admin/editor-data.json',JSON.stringify({repo,branch:'main',site:origin,collections:config.collections,content,images:fs.readdirSync('public/assets',{recursive:true}).filter(p=>/\.(webp|png|jpe?g|gif|avif)$/i.test(p)).map(p=>'/assets/'+p)}));
+fs.writeFileSync('dist/admin/renderer.js',fs.readFileSync('render.mjs','utf8').replace("import fs from 'node:fs';",'const fs={existsSync:()=>true};'));
+console.log('Built native section editors and website for '+repo);

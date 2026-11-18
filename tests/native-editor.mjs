@@ -1,0 +1,14 @@
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import {Repository,encode,decode} from '../public/admin/github-client.js';
+assert.equal(decode(encode('Fresh shine ✨ café')),'Fresh shine ✨ café');
+let calls=[];const original={heading:'Old'};
+const request=async(url,options)=>{const path=url.split('/sky-auto-spa')[1];const body=options.body?JSON.parse(options.body):null;calls.push({path,method:options.method,body});const result=path.startsWith('/git/ref/')?{object:{sha:'head'}}:path.startsWith('/contents/')?{sha:'blob',content:encode(JSON.stringify(original))}:path==='/git/commits/head'?{tree:{sha:'base-tree'}}:path==='/git/blobs'?{sha:'image-blob'}:path==='/git/trees'?{sha:'new-tree'}:path==='/git/commits'?{sha:'new-commit'}:{};return {ok:true,status:200,json:async()=>result};};
+const repo=new Repository('alexanderkerr-gif/sky-auto-spa','main','test-token',request);
+await repo.publish('hero',{heading:'New'},original,[['/assets/uploads/test.png','YWJj']]);
+const tree=calls.find(c=>c.path==='/git/trees');assert.equal(tree.body.base_tree,'base-tree');assert.equal(tree.body.tree.length,2);assert.equal(tree.body.tree[0].path,'public/assets/uploads/test.png');assert.equal(tree.body.tree[1].path,'content/hero.json');assert.equal(calls.at(-1).body.force,false);
+calls=[];await assert.rejects(repo.publish('hero',{}, {heading:'Stale'},[]),/Someone changed/);assert(!calls.some(c=>c.method!=='GET'));
+const failed=new Repository('owner/repo','main','token',async()=>({ok:false,status:403}));await assert.rejects(failed.read('hero'),/denied access/);
+const html=fs.readFileSync('public/admin/index.html','utf8');const js=fs.readFileSync('public/admin/dashboard.js','utf8');assert(!html.includes('<iframe'));assert(!js.includes("createElement('iframe')"));assert(!fs.readFileSync('public/admin/editor.html','utf8').includes('decap'));
+assert(fs.existsSync('dist/admin/renderer.js'));assert(!fs.readFileSync('dist/admin/renderer.js','utf8').includes('node:fs'));
+console.log('PASS: Unicode content, atomic content + photo commit, non-force publishing, stale-edit protection, denied access, native dashboard without CMS iframe.');
